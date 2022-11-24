@@ -15,7 +15,7 @@ assign branch_PC = PC + ImmOp; //compute branch_pc
 assign inc_PC = PC + 32'h4;
 
 logic [PC_WIDTH-1:0] next_PC;
-assign next_PC <= PCsrc? inc_PC :branch_PC
+assign next_PC = PCsrc? inc_PC :branch_PC;
 
 always_ff @ (posedge clk) begin
   if (rst) PC <= {PC_WIDTH{1'b0}};

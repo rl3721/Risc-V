@@ -8,7 +8,7 @@ module ALU #(
     output logic EQ
 );
 
-logic cout;
+
 
 always_comb begin
     if (d0 == d1) EQ = 1'b1;

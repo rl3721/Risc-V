@@ -7,7 +7,7 @@ module instrmem #(
 );
 
 logic [7:0] short_addr; //for this test where a memory of only 8
-logic [DATA_WIDTH-1:0] rom_array [2**8-1:0]; //dont need the whole 2^32 at this stage
+logic [7:0] rom_array [2**8-1:0]; //dont need the whole 2^32 at this stage
 
 assign short_addr = A[7:0];
 
@@ -18,8 +18,8 @@ end;
 
 
 always_comb
-    RD <= (rom_array [short_addr + 8'h3], 
+    RD = {rom_array [short_addr + 8'h3], 
             rom_array [short_addr + 8'h2], 
             rom_array [short_addr + 8'h1], 
-            rom_arary [short_addr]); 
+            rom_array [short_addr]}; 
 endmodule

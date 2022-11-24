@@ -1,7 +1,6 @@
-module top #(
-    PARAMETER WIDTH = 13,
-    PARAMETER DATA_WIDTH = 12,
-    PARAMETER A_WIDTH = 32
+module Top #(
+    parameter  DATA_WIDTH = 32,
+    parameter A_WIDTH = 32
 )(
     input  logic clk,
     input  logic rst,
@@ -43,7 +42,7 @@ components which they control*/
     //Data
     logic [31:0] ALUop2;
     //Control
-    logic ALUsrc;
+    logic ALUSrc;
 
 //Writeback Mux 
     //Data
@@ -52,11 +51,11 @@ components which they control*/
 
 // Data Ram Signals
     //Data
-    output logic [31:0] Data_RD
+    logic [31:0] ReadData;
     //Control
-    input logic Data_WE,
+    logic MemWrite;
 
-ProgramCounter counter_unit (
+counter_unit ProgramCounter (
     .clk(clk),
     .rst(rst),
     .PCsrc(PCsrc),
@@ -64,13 +63,13 @@ ProgramCounter counter_unit (
     .ImmOp(ImmOp)
 );
 
-Instruction InstrMem (
+instrmem Instruction(
     .A(PC),
-    .RD(instr),
+    .RD(instr)
 );
 
-Register RegFile (
-    .clk(clk)
+RegFile Register (
+    .clk(clk),
     .AD1(instr[19:15]),
     .AD2(instr[24:20]),
     .AD3(instr[11:7]),
@@ -82,15 +81,15 @@ Register RegFile (
 );
 
 //ALUmux
-assign ALUop2 <= ALUsrc? RD2 : ImmOp;
+assign ALUop2 = ALUSrc? RD2 : ImmOp;
 
-Extend SignExtension (
+signextend Extend (
     .instr(instr),
     .ImmSrc(ImmSrc),
     .ImmOp(ImmOp)
 );
 
-Alul ALU(
+ALU ALU(
     .d0(RD1),
     .d1(ALUop2),
     .ALUctrl(ALUctrl),
@@ -98,8 +97,8 @@ Alul ALU(
     .dout(ALUResult)
 );
 
-DataMemory data_ram (
-    .clk(clk)
+data_ram data_ram (
+    .clk(clk),
     .Data_WE(MemWrite),
     .Data_addr(ALUResult),
     .Data_WD(RD2),
@@ -107,9 +106,9 @@ DataMemory data_ram (
 );
 
 //Mux for result
-assign Result <= ResultSrc? ALUResult : ReadData;
+assign Result = ResultSrc? ALUResult : ReadData;
 
-Control ControlUnit (
+controlunit Decode (
     .EQ(EQ),
     .instr(instr),
     .RegWrite(RegWrite),
