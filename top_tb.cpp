@@ -2,9 +2,7 @@
 #include "verilated_vcd_c.h"
 #include "Vtop.h"
 
-#define MAX_SIM_CYC 1000000
-#define ADDRESS_WIDTH 9
-#define RAM_SZ pow(2,ADDRESS_WIDTH) // ** needs to change to match the RAM size
+#define MAX_SIM_CYC 1000
 
 int main(int argc, char **argv, char **env) {
   int simcyc;     // simulation clock count

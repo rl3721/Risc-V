@@ -4,7 +4,11 @@ module Top #(
 )(
     input  logic clk,
     input  logic rst,
-    output logic[31:0] a0
+    output logic[31:0] a0,
+    output logic [31:0] instr,
+    output logic [31:0] PC,
+    output logic PCsrc,
+    output logic [31:0] ImmOp
 );
 
 /* all data path signals are defined at the output of 
@@ -13,12 +17,12 @@ components which they control*/
 
 // Program Counter Unit Signals
     //Data
-    logic [31:0] PC;
+    /////logic [31:0] PC;
     //Control
-    logic PCsrc;
+    //logic PCsrc;
 // Instruction Memory
     //Data
-    logic [31:0] instr;
+    ///////logic [31:0] instr;
 // Register Files
     //Data
     logic [31:0] RD1; 
@@ -34,7 +38,7 @@ components which they control*/
 
 // Sign Extension Signals 
     //Data
-    logic [31:0] ImmOp;
+    //logic [31:0] ImmOp;
     //Control
     logic [2:0] ImmSrc;
 
@@ -81,7 +85,7 @@ RegFile Register (
 );
 
 //ALUmux
-assign ALUop2 = ALUSrc? RD2 : ImmOp;
+assign ALUop2 = ALUSrc?ImmOp: RD2;
 
 signextend Extend (
     .instr(instr),
@@ -106,7 +110,7 @@ data_ram data_ram (
 );
 
 //Mux for result
-assign Result = ResultSrc? ALUResult : ReadData;
+assign Result = ResultSrc? ReadData:ALUResult;
 
 controlunit Decode (
     .EQ(EQ),

@@ -15,7 +15,7 @@ class Vtop___024root final : public VerilatedModule {
     // DESIGN SPECIFIC STATE
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
-    CData/*0:0*/ Top__DOT__PCsrc;
+    VL_OUT8(PCsrc,0,0);
     CData/*0:0*/ Top__DOT__RegWrite;
     CData/*0:0*/ Top__DOT__EQ;
     CData/*2:0*/ Top__DOT__ALUctrl;
@@ -25,12 +25,12 @@ class Vtop___024root final : public VerilatedModule {
     CData/*0:0*/ Top__DOT__MemWrite;
     CData/*0:0*/ __Vclklast__TOP__clk;
     VL_OUT(a0,31,0);
-    IData/*31:0*/ Top__DOT__PC;
-    IData/*31:0*/ Top__DOT__instr;
+    VL_OUT(instr,31,0);
+    VL_OUT(PC,31,0);
+    VL_OUT(ImmOp,31,0);
     IData/*31:0*/ Top__DOT__RD1;
     IData/*31:0*/ Top__DOT__RD2;
     IData/*31:0*/ Top__DOT__ALUResult;
-    IData/*31:0*/ Top__DOT__ImmOp;
     IData/*31:0*/ Top__DOT__ALUop2;
     IData/*31:0*/ Top__DOT__ProgramCounter__DOT__next_PC;
     VlUnpacked<CData/*7:0*/, 256> Top__DOT__Instruction__DOT__rom_array;

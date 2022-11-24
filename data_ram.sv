@@ -29,10 +29,10 @@ end
 
 always_ff @(posedge clk)
     if (Data_WE) begin
-    data_mem[short_addr + 3] <= Data_WD[31:24];
-    data_mem[short_addr + 2] <= Data_WD[23:16];
-    data_mem[short_addr + 1] <= Data_WD[15:8];
-    data_mem[short_addr] <= Data_WD[7:0];
+    data_mem[short_addr] <= Data_WD[31:24];
+    data_mem[short_addr + 1] <= Data_WD[23:16];
+    data_mem[short_addr + 2] <= Data_WD[15:8];
+    data_mem[short_addr + 3] <= Data_WD[7:0];
     end
 
 endmodule

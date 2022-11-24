@@ -18,8 +18,8 @@ end;
 
 
 always_comb
-    RD = {rom_array [short_addr + 8'h3], 
-            rom_array [short_addr + 8'h2], 
-            rom_array [short_addr + 8'h1], 
-            rom_array [short_addr]}; 
+    RD = {rom_array [short_addr], 
+            rom_array [short_addr + 1], 
+            rom_array [short_addr + 2], 
+            rom_array [short_addr + 3]}; 
 endmodule
