@@ -2,14 +2,13 @@
 #include "verilated_vcd_c.h"
 #include "Vtop.h"
 
-#include "vbuddy.cpp"     // include vbuddy code
 #define MAX_SIM_CYC 1000000
 #define ADDRESS_WIDTH 9
 #define RAM_SZ pow(2,ADDRESS_WIDTH) // ** needs to change to match the RAM size
 
 int main(int argc, char **argv, char **env) {
   int simcyc;     // simulation clock count
-  int tick;       // each clk cycle has two ticks for two edges
+  int clk;
 
   Verilated::commandArgs(argc, argv);
   // init top verilog instance
@@ -19,29 +18,24 @@ int main(int argc, char **argv, char **env) {
   VerilatedVcdC* tfp = new VerilatedVcdC;
   top->trace (tfp, 99);
   tfp->open ("top.vcd");
- 
-  // init Vbuddy
-  if (vbdOpen()!=1) return(-1);
-  vbdHeader("L4:Microarchitecture");
-  //vbdSetMode(1);        // Flag mode set to one-shot
+
 
   // initialize simulation input 
   top->clk = 1;
   top->rst = 0;
-  
-  vbdInitMicIn(RAM_SZ); //Need to initialise the 
+ 
 
   // run simulation for MAX_SIM_CYC clock cycles
   for (simcyc=0; simcyc<MAX_SIM_CYC; simcyc++) {
     // dump variables into VCD file and toggle clock
-    for (tick=0; tick<2; tick++) {
-      tfp->dump (2*simcyc+tick);
+    for (clk=0; clk<2; clk++) {
+      tfp->dump (2*simcyc+clk);
       top->clk = !top->clk;
       top->eval ();
     }
 
     // either simulation finished, or 'q' is pressed
-    if ((Verilated::gotFinish()) || (vbdGetkey()=='q')) 
+    if ((Verilated::gotFinish())) 
       exit(0);
   }
 
@@ -53,7 +47,7 @@ int main(int argc, char **argv, char **env) {
 //We could also display the program counter instead using vbuddy.
 
 
-  vbdClose();     // ++++
+
   tfp->close(); 
   printf("Exiting\n");
   exit(0);
