@@ -165,41 +165,41 @@ VL_ATTR_COLD void Vtop___024root__trace_full_sub_0(Vtop___024root* vlSelf, Veril
     bufp->fullBit(oldp+9,(vlSelf->Top__DOT__ALUSrc));
     bufp->fullIData(oldp+10,(((IData)(vlSelf->Top__DOT__ResultSrc)
                                ? ((vlSelf->Top__DOT__data_ram__DOT__data_mem
-                                   [(0xffU & ((IData)(3U) 
-                                              + vlSelf->Top__DOT__ALUResult))] 
+                                   [(0xffU & vlSelf->Top__DOT__ALUResult)] 
                                    << 0x18U) | ((vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                  [(0xffU 
-                                                   & ((IData)(2U) 
+                                                   & ((IData)(1U) 
                                                       + vlSelf->Top__DOT__ALUResult))] 
                                                  << 0x10U) 
                                                 | ((vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                     [
                                                     (0xffU 
-                                                     & ((IData)(1U) 
+                                                     & ((IData)(2U) 
                                                         + vlSelf->Top__DOT__ALUResult))] 
                                                     << 8U) 
                                                    | vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                    [
                                                    (0xffU 
-                                                    & vlSelf->Top__DOT__ALUResult)])))
+                                                    & ((IData)(3U) 
+                                                       + vlSelf->Top__DOT__ALUResult))])))
                                : vlSelf->Top__DOT__ALUResult)),32);
     bufp->fullBit(oldp+11,(vlSelf->Top__DOT__ResultSrc));
     bufp->fullIData(oldp+12,(((vlSelf->Top__DOT__data_ram__DOT__data_mem
-                               [(0xffU & ((IData)(3U) 
-                                          + vlSelf->Top__DOT__ALUResult))] 
+                               [(0xffU & vlSelf->Top__DOT__ALUResult)] 
                                << 0x18U) | ((vlSelf->Top__DOT__data_ram__DOT__data_mem
                                              [(0xffU 
-                                               & ((IData)(2U) 
+                                               & ((IData)(1U) 
                                                   + vlSelf->Top__DOT__ALUResult))] 
                                              << 0x10U) 
                                             | ((vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                 [(0xffU 
-                                                  & ((IData)(1U) 
+                                                  & ((IData)(2U) 
                                                      + vlSelf->Top__DOT__ALUResult))] 
                                                 << 8U) 
                                                | vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                [(0xffU 
-                                                 & vlSelf->Top__DOT__ALUResult)])))),32);
+                                                 & ((IData)(3U) 
+                                                    + vlSelf->Top__DOT__ALUResult))])))),32);
     bufp->fullBit(oldp+13,(vlSelf->Top__DOT__MemWrite));
     bufp->fullIData(oldp+14,(vlSelf->Top__DOT__Register__DOT__mem[0]),32);
     bufp->fullIData(oldp+15,(vlSelf->Top__DOT__Register__DOT__mem[1]),32);

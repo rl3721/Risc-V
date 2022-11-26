@@ -21,10 +21,10 @@ initial begin
 end;
 
 always_comb begin
-    Data_RD = {data_mem[short_addr+ 8'h3], 
-    data_mem[short_addr+ 8'h2], 
-    data_mem[short_addr+8'h1], 
-    data_mem[short_addr]};
+    Data_RD = {data_mem[short_addr], 
+    data_mem[short_addr + 1], 
+    data_mem[short_addr + 2], 
+    data_mem[short_addr + 3]};
 end
 
 always_ff @(posedge clk)

@@ -49,18 +49,19 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
         __Vdlyvval__Top__DOT__Register__DOT__mem__v0 
             = ((IData)(vlSelf->Top__DOT__ResultSrc)
                 ? ((vlSelf->Top__DOT__data_ram__DOT__data_mem
-                    [(0xffU & ((IData)(3U) + vlSelf->Top__DOT__ALUResult))] 
+                    [(0xffU & vlSelf->Top__DOT__ALUResult)] 
                     << 0x18U) | ((vlSelf->Top__DOT__data_ram__DOT__data_mem
-                                  [(0xffU & ((IData)(2U) 
+                                  [(0xffU & ((IData)(1U) 
                                              + vlSelf->Top__DOT__ALUResult))] 
                                   << 0x10U) | ((vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                 [(0xffU 
-                                                  & ((IData)(1U) 
+                                                  & ((IData)(2U) 
                                                      + vlSelf->Top__DOT__ALUResult))] 
                                                 << 8U) 
                                                | vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                [(0xffU 
-                                                 & vlSelf->Top__DOT__ALUResult)])))
+                                                 & ((IData)(3U) 
+                                                    + vlSelf->Top__DOT__ALUResult))])))
                 : vlSelf->Top__DOT__ALUResult);
         __Vdlyvset__Top__DOT__Register__DOT__mem__v0 = 1U;
         __Vdlyvdim0__Top__DOT__Register__DOT__mem__v0 

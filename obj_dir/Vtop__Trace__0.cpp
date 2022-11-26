@@ -35,45 +35,45 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
         bufp->chgBit(oldp+8,(vlSelf->Top__DOT__ALUSrc));
         bufp->chgIData(oldp+9,(((IData)(vlSelf->Top__DOT__ResultSrc)
                                  ? ((vlSelf->Top__DOT__data_ram__DOT__data_mem
-                                     [(0xffU & ((IData)(3U) 
-                                                + vlSelf->Top__DOT__ALUResult))] 
+                                     [(0xffU & vlSelf->Top__DOT__ALUResult)] 
                                      << 0x18U) | ((
                                                    vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                    [
                                                    (0xffU 
-                                                    & ((IData)(2U) 
+                                                    & ((IData)(1U) 
                                                        + vlSelf->Top__DOT__ALUResult))] 
                                                    << 0x10U) 
                                                   | ((vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                       [
                                                       (0xffU 
-                                                       & ((IData)(1U) 
+                                                       & ((IData)(2U) 
                                                           + vlSelf->Top__DOT__ALUResult))] 
                                                       << 8U) 
                                                      | vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                      [
                                                      (0xffU 
-                                                      & vlSelf->Top__DOT__ALUResult)])))
+                                                      & ((IData)(3U) 
+                                                         + vlSelf->Top__DOT__ALUResult))])))
                                  : vlSelf->Top__DOT__ALUResult)),32);
         bufp->chgBit(oldp+10,(vlSelf->Top__DOT__ResultSrc));
         bufp->chgIData(oldp+11,(((vlSelf->Top__DOT__data_ram__DOT__data_mem
-                                  [(0xffU & ((IData)(3U) 
-                                             + vlSelf->Top__DOT__ALUResult))] 
+                                  [(0xffU & vlSelf->Top__DOT__ALUResult)] 
                                   << 0x18U) | ((vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                 [(0xffU 
-                                                  & ((IData)(2U) 
+                                                  & ((IData)(1U) 
                                                      + vlSelf->Top__DOT__ALUResult))] 
                                                 << 0x10U) 
                                                | ((vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                    [
                                                    (0xffU 
-                                                    & ((IData)(1U) 
+                                                    & ((IData)(2U) 
                                                        + vlSelf->Top__DOT__ALUResult))] 
                                                    << 8U) 
                                                   | vlSelf->Top__DOT__data_ram__DOT__data_mem
                                                   [
                                                   (0xffU 
-                                                   & vlSelf->Top__DOT__ALUResult)])))),32);
+                                                   & ((IData)(3U) 
+                                                      + vlSelf->Top__DOT__ALUResult))])))),32);
         bufp->chgBit(oldp+12,(vlSelf->Top__DOT__MemWrite));
         bufp->chgIData(oldp+13,(vlSelf->Top__DOT__Register__DOT__mem[0]),32);
         bufp->chgIData(oldp+14,(vlSelf->Top__DOT__Register__DOT__mem[1]),32);

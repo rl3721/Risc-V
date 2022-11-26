@@ -1,6 +1,8 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
 #include "Vtop.h"
+#include "vbuddy.cpp"
+
 
 #define MAX_SIM_CYC 1000
 
@@ -22,6 +24,9 @@ int main(int argc, char **argv, char **env) {
   top->clk = 1;
   top->rst = 0;
  
+  // init Vbuddy
+  if (vbdOpen()!=1) return(-1);
+  vbdHeader("L4:Microarchitecture");
 
   // run simulation for MAX_SIM_CYC clock cycles
   for (simcyc=0; simcyc<MAX_SIM_CYC; simcyc++) {
@@ -31,7 +36,9 @@ int main(int argc, char **argv, char **env) {
       top->clk = !top->clk;
       top->eval ();
     }
-
+    
+    vbdPlot(int (top->a0), 0, 255);
+    
     // either simulation finished, or 'q' is pressed
     if ((Verilated::gotFinish())) 
       exit(0);
